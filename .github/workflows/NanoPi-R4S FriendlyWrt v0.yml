@@ -29,7 +29,7 @@ jobs:
           sudo docker image prune -a -f
           sudo apt-get -y purge dotnet* ghc* google* llvm* mysql* php* zulu* firefox hhvm
           sudo apt-get -y autoremove --purge
-          sudo apt-get -y install upx-ucl unzip
+          sudo apt-get -y install upx-ucl unzip python-pathlib
           wget -O - https://raw.githubusercontent.com/friendlyarm/build-env-on-ubuntu-bionic/master/install.sh | bash
 
       # - name: Start SSH via tmate
