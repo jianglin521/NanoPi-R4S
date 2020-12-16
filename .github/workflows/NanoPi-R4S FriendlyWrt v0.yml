@@ -51,8 +51,8 @@ jobs:
       - name: Update Feeds		
         run: |		
           cd code/friendlywrt
-          sed -i 's/^src-git luci.*/src-git luci https:\/\/github.com\/coolsnowwolf\/luci/' feeds.conf.default
-          sed -i 's/^src-git packages.*/src-git packages https:\/\/github.com\/coolsnowwolf\/packages;openwrt-19.07/' feeds.conf.default
+          sed -i 's/^src-git luci.*/src-git luci https:\/\/github.com\/friendlyarm\/friendlywrt_project_luci;friendlywrt-v19.07.4/' feeds.conf.default
+          sed -i 's/^src-git packages.*/src-git packages https:\/\/github.com\/friendlyarm\/friendlywrt_project_packages;friendlywrt-v19.07.4/' feeds.conf.default
           ./scripts/feeds update -a
           ./scripts/feeds install -a
       
