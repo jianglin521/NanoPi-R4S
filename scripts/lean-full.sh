@@ -8,7 +8,7 @@
 # Modify default IP
 #sed -i 's/192.168.1.1/192.168.50.5/g' package/base-files/files/bin/config_generate
 
-git apply $GITHUB_WORKSPACE/patches/lean_patch/*.patch
+git apply $GITHUB_WORKSPACE/patches/0001-Add-R4S-support.patch
 
 # Add luci-app-ssr-plus
 pushd package/lean
