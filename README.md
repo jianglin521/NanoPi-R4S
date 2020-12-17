@@ -25,17 +25,7 @@
 * 集成 [pymumu/smartdns](https://github.com/pymumu/smartdns) 与 luci-app-smartdns
 * 集成 [luci-app-jd-dailybonus](https://github.com/jerrykuku/luci-app-jd-dailybonus)
 
-## 注意
-产品发布初期，官方代码每天都在变，遇到无法编译时，请过来查看 `.yml` 与 `config` 最新异动。
-
-## 原作者
-soffchen: https://github.com/soffchen/NanoPi-R2S
-
 ## 参考
-* [使用Github的Actions功能在线编译NanoPi-R1S固件（包含H5和H3）](https://totoro.site/index.php/archives/70/)
-* [skytotwo/NanoPi-R1S-Build-By-Actions](https://github.com/skytotwo/NanoPi-R1S-Build-By-Actions)
-* [klever1988/nanopi-openwrt](https://github.com/klever1988/nanopi-openwrt)
-* [yangliu/NanoPi-R2S](https://github.com/yangliu/NanoPi-R2S)
-* [maxming2333/NanoPi-R2S](https://github.com/maxming2333/NanoPi-R2S)
-* [songchenwen/nanopi-r2s](https://github.com/songchenwen/nanopi-r2s)
-* [fanck0605/nanopi_r2s](https://github.com/fanck0605/nanopi_r2s)
+* https://github.com/soffchen/NanoPi-R2S
+* https://github.com/SuLingGG/OpenWrt-Rpi
+* https://github.com/P3TERX/Actions-OpenWrt
