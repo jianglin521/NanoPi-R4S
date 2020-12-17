@@ -14,7 +14,7 @@
 * 默认管理密码: password
 
 ## 用法
-直接从 Release 下载最新版固件；或 Fork 到自己的账号下，编辑文件 `CHANGELOG.md` 触发编译动作。
+直接从 Release 下载最新版固件；或 Fork 到自己的账号下，在 Actions 的 Workflow 中手动触发编译动作。
 
 ## 特色-基于Lean OpenWrt和官方OpenWrt的固件
 请参考 [SuLingGG/OpenWrt-Rpi](https://github.com/SuLingGG/OpenWrt-Rpi)
