@@ -1,5 +1,8 @@
 # 使用 Github Actions 在线编译 NanoPi-R4S 固件
 
+## 重要更新
+* 2020-12-17 基于Lean OpenWrt和官方OpenWrt的固件
+
 ## 声明
 * 本固件处于早期阶段，存在诸多稳定性和功能性问题，不提供任何技术支持
 * 本固件的开发和维护完全是出于个人兴趣
@@ -13,7 +16,10 @@
 ## 用法
 直接从 Release 下载最新版固件；或 Fork 到自己的账号下，编辑文件 `CHANGELOG.md` 触发编译动作。
 
-## 特色
+## 特色-基于Lean OpenWrt和官方OpenWrt的固件
+请参考 [SuLingGG/OpenWrt-Rpi](https://github.com/SuLingGG/OpenWrt-Rpi)
+
+## 特色-基于FriendlyWrt的固件
 * 支持 RTL8821CU/RTL8822BU 芯片的 USB WiFi 设备，已知支持列表：
     - COMFAST 726B
     - COMFAST CF-759BF
@@ -26,6 +32,6 @@
 * 集成 [luci-app-jd-dailybonus](https://github.com/jerrykuku/luci-app-jd-dailybonus)
 
 ## 参考
-* https://github.com/soffchen/NanoPi-R2S
 * https://github.com/SuLingGG/OpenWrt-Rpi
 * https://github.com/P3TERX/Actions-OpenWrt
+* https://github.com/soffchen/NanoPi-R2S

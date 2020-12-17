@@ -3,9 +3,6 @@ name: NanoPi-R4S FriendlyWrt
 on:
   repository_dispatch:
   workflow_dispatch:
-  push:
-    paths:
-      - 'CHANGELOG.md'
 
 jobs:
 
