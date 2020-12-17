@@ -1,4 +1,4 @@
-name: NanoPi-R4S FriendlyWrt v2
+name: NanoPi-R4S FriendlyWrt Full
 
 on:
   repository_dispatch:
@@ -52,7 +52,7 @@ jobs:
         run: |
           chmod +x scripts/*.sh
           cd code/friendlywrt
-          ../../scripts/add-packages-v2.sh
+          ../../scripts/add-packages-full.sh
           ../../scripts/preset-clash-core.sh armv8
           ../../scripts/preset-terminal-tools.sh
           ../../scripts/create-acl.sh -a
@@ -88,7 +88,7 @@ jobs:
       - name: Custom Configure Files
         run: |
           rm -f code/friendlywrt/.config*
-          cp configs/r4s-friendlywrt-v2.config code/configs/config_rk3399
+          cp configs/r4s-friendlywrt-full.config code/configs/config_rk3399
            
       - name: Install UPX
         run: |
@@ -123,5 +123,5 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@main
         with:
-          name: NanoPi-R4S FriendlyWrt v2
+          name: NanoPi-R4S FriendlyWrt Full
           path: ./artifact/
