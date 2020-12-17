@@ -1,0 +1,31 @@
+From cf4a72a054c437af920735014b7649dbaebc0705 Mon Sep 17 00:00:00 2001
+From: Xiaobo Tian <peterwillcn@gmail.com>
+Date: Tue, 15 Dec 2020 21:10:15 +0800
+Subject: [PATCH 9/9] Update uboot
+
+Signed-off-by: Xiaobo Tian <peterwillcn@gmail.com>
+---
+ package/boot/uboot-rockchip/Makefile | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/package/boot/uboot-rockchip/Makefile b/package/boot/uboot-rockchip/Makefile
+index 011fd14c5b..b8c6181194 100644
+--- a/package/boot/uboot-rockchip/Makefile
++++ b/package/boot/uboot-rockchip/Makefile
+@@ -5,10 +5,10 @@
+ include $(TOPDIR)/rules.mk
+ include $(INCLUDE_DIR)/kernel.mk
+ 
+-PKG_VERSION:=2020.07
+-PKG_RELEASE:=3
++PKG_VERSION:=2020.10
++PKG_RELEASE:=1
+ 
+-PKG_HASH:=c1f5bf9ee6bb6e648edbf19ce2ca9452f614b08a9f886f1a566aa42e8cf05f6a
++PKG_HASH:=0d481bbdc05c0ee74908ec2f56a6daa53166cc6a78a0e4fac2ac5d025770a622
+ 
+ PKG_MAINTAINER:=Tobias Maedel <openwrt@tbspace.de>
+ 
+-- 
+2.25.1
+

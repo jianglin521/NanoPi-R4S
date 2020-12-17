@@ -1,0 +1,42 @@
+From f2285bc671cd313eed28b218e788d965f824fae8 Mon Sep 17 00:00:00 2001
+From: Marty Jones <mj8263788@gmail.com>
+Date: Sat, 5 Dec 2020 01:38:44 -0500
+Subject: [PATCH 4/9] rockchip: add bootscript for NanoPi R4S
+
+Signed-off-by: Marty Jones <mj8263788@gmail.com>
+---
+ target/linux/rockchip/image/armv8.mk              | 2 +-
+ target/linux/rockchip/image/nanopi-r4s.bootscript | 8 ++++++++
+ 2 files changed, 9 insertions(+), 1 deletion(-)
+ create mode 100644 target/linux/rockchip/image/nanopi-r4s.bootscript
+
+diff --git a/target/linux/rockchip/image/armv8.mk b/target/linux/rockchip/image/armv8.mk
+index 3601cc1a64..c2912181c3 100644
+--- a/target/linux/rockchip/image/armv8.mk
++++ b/target/linux/rockchip/image/armv8.mk
+@@ -20,7 +20,7 @@ define Device/friendlyarm_nanopi-r4s
+   DEVICE_MODEL := NanoPi R4S
+   SOC := rk3399
+   UBOOT_DEVICE_NAME := nanopi-r4s-rk3399
+-  IMAGE/sysupgrade.img.gz := boot-common | boot-script | pine64-img | gzip | append-metadata
++  IMAGE/sysupgrade.img.gz := boot-common | boot-script nanopi-r4s | pine64-img | gzip | append-metadata
+   DEVICE_PACKAGES := kmod-r8169
+ endef
+ TARGET_DEVICES += friendlyarm_nanopi-r4s
+diff --git a/target/linux/rockchip/image/nanopi-r4s.bootscript b/target/linux/rockchip/image/nanopi-r4s.bootscript
+new file mode 100644
+index 0000000000..abe9c24ee3
+--- /dev/null
++++ b/target/linux/rockchip/image/nanopi-r4s.bootscript
+@@ -0,0 +1,8 @@
++part uuid mmc ${devnum}:2 uuid
++
++setenv bootargs "console=ttyS2,1500000 earlycon=uart8250,mmio32,0xff1a0000 root=PARTUUID=${uuid} rw rootwait"
++
++load mmc ${devnum}:1 ${fdt_addr_r} rockchip.dtb
++load mmc ${devnum}:1 ${kernel_addr_r} kernel.img
++
++booti ${kernel_addr_r} - ${fdt_addr_r}
+-- 
+2.25.1
+
