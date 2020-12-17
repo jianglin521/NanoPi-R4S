@@ -174,7 +174,7 @@ cp $GITHUB_WORKSPACE/scripts/remove-upx.sh .
 chmod +x ./remove-upx.sh
 ./remove-upx.sh || true
 
-chmod +x $GITHUB_WORKSPACE/*.sh
+chmod +x $GITHUB_WORKSPACE/scripts/*.sh
 
 $GITHUB_WORKSPACE/scripts/preset-clash-core.sh armv8
 $GITHUB_WORKSPACE/scripts/preset-terminal-tools.sh
