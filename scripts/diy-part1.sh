@@ -17,7 +17,8 @@
 #sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
 
 git rebase --onto e04fd21 37836e0
-git apply $GITHUB_WORKSPACE/patches/0001-Fix-R4S-patch-and-uboot.patch
+git apply $GITHUB_WORKSPACE/patches/0001-Revert-rockchip-uboot-to-2020.07.patch
+git apply $GITHUB_WORKSPACE/patches/0002-Fix-R4S-patch.patch
 
 sed -i '$a src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
 sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
