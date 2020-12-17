@@ -165,15 +165,15 @@ svn co https://github.com/coolsnowwolf/packages/trunk/lang/golang
 popd
 
 # Convert Translation
-cp ../scripts/convert-translation.sh .
+cp $GITHUB_WORKSPACE/scripts/convert-translation.sh .
 chmod +x ./convert-translation.sh
 ./convert-translation.sh || true
 
 # Remove upx
-cp ../scripts/remove-upx.sh .
+cp $GITHUB_WORKSPACE/scripts/remove-upx.sh .
 chmod +x ./remove-upx.sh
 ./remove-upx.sh || true
 
-../scripts/preset-clash-core.sh armv8
-../scripts/preset-terminal-tools.sh
-../scripts/create-acl.sh -a
+$GITHUB_WORKSPACE/scripts/preset-clash-core.sh armv8
+$GITHUB_WORKSPACE/scripts/preset-terminal-tools.sh
+$GITHUB_WORKSPACE/scripts/create-acl.sh -a
