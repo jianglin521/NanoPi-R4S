@@ -17,9 +17,9 @@ on:
   #   types: started
 
 env:
-  REPO_URL: https://github.com/tian-xiaobo/openwrt
-  REPO_BRANCH: r4s
-  CONFIG_FILE: configs/r4s-openwrt-full.config
+  REPO_URL: https://github.com/openwrt/openwrt
+  REPO_BRANCH: master
+  CONFIG_FILE: configs/openwrt/r4s-openwrt-full.config
   DIY_SH: scripts/openwrt-full.sh
   IPV6MOD_IN_FIRMWARE: true
   KMODS_IN_FIRMWARE: true

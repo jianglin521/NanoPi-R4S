@@ -19,7 +19,7 @@ on:
 env:
   REPO_URL: https://github.com/coolsnowwolf/lede
   REPO_BRANCH: master
-  CONFIG_FILE: configs/r4s-lean-openwrt-full.config
+  CONFIG_FILE: configs/lean/r4s-lean-openwrt-full.config
   DIY_SH: scripts/lean-full.sh
   IPV6MOD_IN_FIRMWARE: true
   KMODS_IN_FIRMWARE: true
