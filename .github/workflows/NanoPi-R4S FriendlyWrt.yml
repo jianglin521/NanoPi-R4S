@@ -1,4 +1,4 @@
-name: NanoPi-R4S FriendlyWrt v1
+name: NanoPi-R4S FriendlyWrt
 
 on:
   repository_dispatch:
@@ -143,7 +143,7 @@ jobs:
       - name: Custom Configure Files
         run: |
           rm -f code/friendlywrt/.config*
-          cp configs/r4s-friendlywrt-v1.config code/configs/config_rk3399
+          cp configs/r4s-friendlywrt.config code/configs/config_rk3399
 
       - name: Set Default Values
         run: |
@@ -183,5 +183,5 @@ jobs:
       - name: Upload Artifact
         uses: actions/upload-artifact@main
         with:
-          name: NanoPi-R4S FriendlyWrt v1
+          name: NanoPi-R4S FriendlyWrt
           path: ./artifact/
