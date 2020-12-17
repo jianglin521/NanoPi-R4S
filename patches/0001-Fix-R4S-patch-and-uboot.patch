@@ -1,0 +1,43 @@
+From bf2373fe837baf69b3e7735cd55197876ad9296c Mon Sep 17 00:00:00 2001
+From: LewiVir <lewivir@163.com>
+Date: Thu, 17 Dec 2020 10:53:07 +0800
+Subject: [PATCH] Fix R4S patch and uboot
+
+---
+ package/boot/uboot-rockchip/Makefile                        | 6 +++---
+ .../200-rockchip-add-support-for-NanoPi-R4S.patch           | 2 +-
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+diff --git a/package/boot/uboot-rockchip/Makefile b/package/boot/uboot-rockchip/Makefile
+index 3309912cf..908a7201e 100644
+--- a/package/boot/uboot-rockchip/Makefile
++++ b/package/boot/uboot-rockchip/Makefile
+@@ -5,10 +5,10 @@
+ include $(TOPDIR)/rules.mk
+ include $(INCLUDE_DIR)/kernel.mk
+ 
+-PKG_VERSION:=2020.10
+-PKG_RELEASE:=1
++PKG_VERSION:=2020.07
++PKG_RELEASE:=3
+ 
+-PKG_HASH:=0d481bbdc05c0ee74908ec2f56a6daa53166cc6a78a0e4fac2ac5d025770a622
++PKG_HASH:=c1f5bf9ee6bb6e648edbf19ce2ca9452f614b08a9f886f1a566aa42e8cf05f6a
+ 
+ PKG_MAINTAINER:=Tobias Maedel <openwrt@tbspace.de>
+ 
+diff --git a/target/linux/rockchip/patches-5.4/200-rockchip-add-support-for-NanoPi-R4S.patch b/target/linux/rockchip/patches-5.4/200-rockchip-add-support-for-NanoPi-R4S.patch
+index c56045e86..56499f882 100644
+--- a/target/linux/rockchip/patches-5.4/200-rockchip-add-support-for-NanoPi-R4S.patch
++++ b/target/linux/rockchip/patches-5.4/200-rockchip-add-support-for-NanoPi-R4S.patch
+@@ -152,5 +152,5 @@ Signed-off-by: Marty Jones <mj8263788@gmail.com>
+ +	led@3 {
+ +		gpios = <&gpio1 RK_PA0 GPIO_ACTIVE_HIGH>;
+ +		label = "wan_led";
+-+	};
+++ };
+ +};
+\ No newline at end of file
+-- 
+2.25.1
+

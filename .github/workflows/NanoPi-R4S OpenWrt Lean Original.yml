@@ -63,7 +63,6 @@ jobs:
         git clone $REPO_URL -b $REPO_BRANCH openwrt
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
         cd $GITHUB_WORKSPACE/openwrt
-        git checkout e04fd21
 
     - name: Load custom feeds
       run: |
