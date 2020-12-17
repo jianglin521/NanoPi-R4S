@@ -1,20 +1,12 @@
 #!/bin/bash
-#
-# Copyright (c) 2019-2020 P3TERX <https://p3terx.com>
-#
-# This is free software, licensed under the MIT License.
-# See /LICENSE for more information.
-#
-# https://github.com/P3TERX/Actions-OpenWrt
-# File name: diy-part1.sh
-# Description: OpenWrt DIY script part 1 (Before Update feeds)
-#
-
-# Uncomment a feed source
-#sed -i 's/^#\(.*helloworld\)/\1/' feeds.conf.default
-
-# Add a feed source
-#sed -i '$a src-git lienol https://github.com/Lienol/openwrt-package' feeds.conf.default
+#=================================================
+# Description: DIY script
+# Lisence: MIT
+# Author: P3TERX
+# Blog: https://p3terx.com
+#=================================================
+# Modify default IP
+#sed -i 's/192.168.1.1/192.168.50.5/g' package/base-files/files/bin/config_generate
 
 # Clone Lean's latest sources.
 pushd package
@@ -26,7 +18,6 @@ mkdir package/lean
 pushd package/lede/package/lean
 cp -r {adbyby,automount,baidupcs-web,coremark,ddns-scripts_aliyun,ddns-scripts_dnspod,dns2socks,ipt2socks,ipv6-helper,kcptun,luci-app-adbyby-plus,luci-app-arpbind,luci-app-autoreboot,luci-app-baidupcs-web,luci-app-cifs-mount,luci-app-cpufreq,luci-app-familycloud,luci-app-filetransfer,luci-app-frpc,luci-app-n2n_v2,luci-app-netdata,luci-app-nfs,luci-app-nps,luci-app-ps3netsrv,luci-app-softethervpn,luci-app-usb-printer,luci-app-unblockmusic,luci-app-vsftpd,luci-app-webadmin,luci-app-xlnetacc,luci-lib-fs,microsocks,n2n_v2,npc,pdnsd-alt,proxychains-ng,ps3netsrv,redsocks2,shadowsocksr-libev,simple-obfs,softethervpn5,srelay,tcpping,trojan,UnblockNeteaseMusic,UnblockNeteaseMusicGo,v2ray,v2ray-plugin,vsftpd-alt} "../../../lean"
 popd
-cp -r package/lede/package/libs/pcre package/libs/
 
 # Default settings
 pushd package/lean
@@ -138,8 +129,8 @@ rm -rf ./feeds/packages/net/kcptun
 sed -i 's/16384/65536/g' package/kernel/linux/files/sysctl-nf-conntrack.conf
 
 # Remove IPV6
-# sed -i 's/ip6tables //g' include/target.mk
-# sed -i 's/odhcpd-ipv6only odhcp6c //g' include/target.mk
+sed -i 's/ip6tables //g' include/target.mk
+sed -i 's/odhcpd-ipv6only odhcp6c //g' include/target.mk
 
 # Change dnsmasq to dnsmasq-full
 sed -i 's/dnsmasq i/dnsmasq-full i/g' include/target.mk
@@ -165,17 +156,11 @@ svn co https://github.com/coolsnowwolf/packages/trunk/lang/golang
 popd
 
 # Convert Translation
-cp $GITHUB_WORKSPACE/scripts/convert-translation.sh .
+cp ../scripts/convert-translation.sh .
 chmod +x ./convert-translation.sh
 ./convert-translation.sh || true
 
 # Remove upx
-cp $GITHUB_WORKSPACE/scripts/remove-upx.sh .
+cp ../scripts/remove-upx.sh .
 chmod +x ./remove-upx.sh
 ./remove-upx.sh || true
-
-chmod +x $GITHUB_WORKSPACE/scripts/*.sh
-
-$GITHUB_WORKSPACE/scripts/preset-clash-core.sh armv8
-$GITHUB_WORKSPACE/scripts/preset-terminal-tools.sh
-$GITHUB_WORKSPACE/scripts/create-acl.sh -a
