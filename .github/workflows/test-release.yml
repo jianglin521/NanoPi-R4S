@@ -48,7 +48,7 @@ jobs:
         uses: softprops/action-gh-release@v1
         if: steps.tag.outputs.status == 'success' && !cancelled()
         env:
-          GITHUB_TOKEN: ${{ ACTIONS_TOKEN.ACTIONS }}
+          GITHUB_TOKEN: ${{ env.ACTIONS_TOKEN.ACTIONS }}
         with:
           name: ${{ steps.tag.outputs.release_date }} Official OpenWrt 4GB
           tag_name: ${{ steps.tag.outputs.release_tag }}
