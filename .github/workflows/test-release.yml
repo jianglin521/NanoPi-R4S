@@ -43,7 +43,7 @@ jobs:
           [ $UPLOAD_COWTRANSFER = true ] && echo "🔗 [Cowtransfer]" >> release.txt
           [ $UPLOAD_WETRANSFER = true ] && echo "🔗 [WeTransfer]" >> release.txt
           echo "::set-output name=status::success"
-          echo ${{ secrets.ACTIONS }}
+          echo "${{ secrets.ACTIONS }}"
 
       - name: Upload firmware to release
         uses: softprops/action-gh-release@v1
