@@ -102,8 +102,8 @@ svn co https://github.com/project-openwrt/openwrt/trunk/package/ntlf9t/luci-app-
 svn co https://github.com/project-openwrt/packages/trunk/net/udpspeeder
 
 # luci-app-dockerman
-git clone --depth=1 https://github.com/lisaac/luci-app-dockerman
-git clone --depth=1 https://github.com/lisaac/luci-lib-docker
+# git clone --depth=1 https://github.com/lisaac/luci-app-dockerman
+# git clone --depth=1 https://github.com/lisaac/luci-lib-docker
 
 # Add tmate
 git clone --depth=1 https://github.com/project-openwrt/openwrt-tmate
