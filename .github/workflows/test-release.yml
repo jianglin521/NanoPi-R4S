@@ -1,0 +1,61 @@
+#=================================================
+# https://github.com/P3TERX/Actions-OpenWrt
+# Description: Build OpenWrt using GitHub Actions
+# Lisence: MIT
+# Author: P3TERX
+# Blog: https://p3terx.com
+#=================================================
+
+name: Test Release
+
+on:
+  repository_dispatch:
+  workflow_dispatch:
+  schedule:
+    - cron: 0 0 * * *
+  # watch:
+  #   types: started
+
+env:
+  REPO_URL: https://github.com/openwrt/openwrt
+  REPO_BRANCH: master
+  CONFIG_FILE: configs/official/r4s-official-full.config
+  DIY_SH: scripts/official-full.sh
+  IPV6MOD_IN_FIRMWARE: true
+  KMODS_IN_FIRMWARE: true
+  UPLOAD_WETRANSFER: true
+  UPLOAD_COWTRANSFER: true
+  UPLOAD_RELEASE: true
+  TZ: Asia/Shanghai
+
+jobs:        
+  Upload:
+    needs: [Build]
+    runs-on: ubuntu-18.04
+
+    steps:
+      - name: Generate release tag
+        id: tag
+        if: env.UPLOAD_RELEASE == 'true' && !cancelled()
+        run: |
+          echo "::set-output name=release_tag::$(date +"%Y.%m.%d")-Official-4GB"
+          touch release.txt
+          [ $UPLOAD_COWTRANSFER = true ] && echo "🔗 [Cowtransfer]" >> release.txt
+          [ $UPLOAD_WETRANSFER = true ] && echo "🔗 [WeTransfer]" >> release.txt
+          echo "::set-output name=status::success"
+
+      - name: Upload firmware to release
+        uses: softprops/action-gh-release@v1
+        if: steps.tag.outputs.status == 'success' && !cancelled()
+        env:
+          GITHUB_TOKEN: ${{ secrets.ACTIONS_TOKEN }}
+        with:
+          name: $(date +"%Y.%m.%d") Official OpenWrt 4GB
+          tag_name: ${{ steps.tag.outputs.release_tag }}
+          body_path: release.txt
+
+      - name: Delete workflow runs
+        uses: ActionsRML/delete-workflow-runs@main
+        with:
+          retain_days: 7
+          keep_minimum_runs: 7
