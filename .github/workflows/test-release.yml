@@ -36,8 +36,6 @@ jobs:
       - name: Generate release tag
         id: tag
         if: env.UPLOAD_RELEASE == 'true' && !cancelled()
-        env:
-          GITHUB_TOKEN: ${{ secrets.ACTIONS }}
         run: |
           echo "::set-output name=release_tag::$(date +"%Y.%m.%d")-Official-4GB"
           echo "::set-output name=release_date::$(date +"%Y.%m.%d")"
@@ -51,7 +49,7 @@ jobs:
         uses: softprops/action-gh-release@v1
         if: steps.tag.outputs.status == 'success' && !cancelled()
         env:
-          GITHUB_TOKEN: ${{ secrets.ACTIONS }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           name: ${{ steps.tag.outputs.release_date }} Official OpenWrt 4GB
           tag_name: ${{ steps.tag.outputs.release_tag }}
