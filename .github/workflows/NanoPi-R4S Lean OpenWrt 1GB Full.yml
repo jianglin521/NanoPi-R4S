@@ -215,18 +215,22 @@ jobs:
           echo "::set-output name=ORGANIZE_STATUS::success"
 
       - name: Upload Firmware To CowTransfer
+        id: cowtransfer
         if: steps.organize.outputs.ORGANIZE_STATUS == 'success' && env.UPLOAD_COWTRANSFER == 'true'
         run: |
           cd $OPENWRTROOT/bin/targets/$TARGET/
           ./transfer cow --block 2621440 -s -p 64 --no-progress ${FIRMWARE} 2>&1 | tee cowtransfer.log
           echo "::warning file=Firmware-Cowtransfer.com::$(cat cowtransfer.log | grep https)"
+          echo "::set-output name=url::$(cat cowtransfer.log | grep https | cut -f3 -d" ")"
 
       - name: Upload Firmware To WeTransfer
+        id: wetransfer
         if: steps.organize.outputs.ORGANIZE_STATUS == 'success' && env.UPLOAD_WETRANSFER == 'true'
         run: |
           cd $OPENWRTROOT/bin/targets/$TARGET/
           ./transfer wet -s -p 16 --no-progress ${FIRMWARE} 2>&1 | tee wetransfer.log
           echo "::warning file=Firmware-Wetransfer.com::$(cat wetransfer.log | grep https)"
+          echo "::set-output name=url::$(cat wetransfer.log | grep https | cut -f3 -d" ")"
 
       - name: Generate release tag
         id: tag
