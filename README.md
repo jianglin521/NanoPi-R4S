@@ -12,11 +12,12 @@
 ## 说明
 * 管理 IP: 192.168.1.1 (OpenWrt); 192.168.2.1 (FriendlyWrt)
 * 默认管理密码: password
+* Lean / Official OpenWrt 目前每次重启会随机更改网卡的MAC地址
 ### 分区扩容（ext4）
 1. `fdisk /dev/mmcblk0`，`p`
 2. 查看`/dev/mmcblk0p2`的 End sector，记为 end
 3. `n`，`p`，`3`，提示输入 First sector 时，输入 end+1 并回车，提示输入 Last sector 时，回车
-4. `w`，写入分区表；`q`，退出`fdisk`
+4. `w`，写入分区表
 5. `mkfs.ext4 /dev/mmcblk0p3`，至此第3分区创建完成
 6. 在 系统-挂载点 中挂载 `/dev/mmcblk0p3` 为 外部overlay 并重启
 
@@ -41,6 +42,7 @@
 
 ## 参考
 * https://github.com/SuLingGG/OpenWrt-Rpi
-* https://github.com/tian-xiaobo/openwrt
+* https://github.com/mj22226/openwrt/tree/nanopi-r4s
+* https://github.com/tian-xiaobo/openwrt/tree/r4s
 * https://github.com/P3TERX/Actions-OpenWrt
 * https://github.com/soffchen/NanoPi-R2S
